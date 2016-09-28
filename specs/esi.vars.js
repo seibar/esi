@@ -31,4 +31,12 @@ describe("esi:assign, esi:vars and $(key)", function(){
 		expect(esi).to.eventually.be.eql( '' ).and.notify(done);
 	});
 
+	it("should return the default value if specified and unable to match variables", function(done) {
+
+		var str = "<esi:vars name=$(doesNotExist|'defaultValue')/>";
+
+		var esi = ESI( str );
+		expect(esi).to.eventually.be.eql( 'defaultValue' ).and.notify(done);
+	});
+
 });

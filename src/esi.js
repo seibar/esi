@@ -442,7 +442,7 @@ function makeRequest( url, resolve, reject ){
 	//log( log.INFO, url );
 
 	// Get the resource
-	
+
 	http.get( module.exports.urlPrefix + url, function(res){
 
 		var body='';
@@ -518,10 +518,10 @@ function getAttributes(str, undefined){
 //
 // Dictionary replace
 //
-var reg_esi_variable = /\$\((.*?)(?:\{([\d\w]+)\})?\)/g;
+var reg_esi_variable = /\$\((.*?)(?:\{([\d\w]+)\})?\|?(['|"](.*)['|"])?\)/g;
 
 function DictionaryReplace(str, hash){
-	return str.replace( reg_esi_variable, function (m, key, subkey){
+	return str.replace( reg_esi_variable, function (m, key, subkey, d, defaultValue){
 		if(key in hash){
 			var val = hash[key];
 			if( subkey ){
@@ -529,7 +529,7 @@ function DictionaryReplace(str, hash){
 			}
 			return val === undefined ? '' : val;
 		}
-		return '';
+		return defaultValue || '';
 	});
 }
 
