@@ -442,8 +442,8 @@ function makeRequest( url, resolve, reject ){
 	//log( log.INFO, url );
 
 	// Get the resource
-
-	http.get( url, function(res){
+	
+	http.get( module.exports.urlPrefix + url, function(res){
 
 		var body='';
 

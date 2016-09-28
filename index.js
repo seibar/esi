@@ -17,6 +17,8 @@ module.exports = function( req, res, next ){
 	// Set debug level in module
 	ESI.debug = module.exports.debug;
 
+	ESI.urlPrefix = module.exports.urlPrefix || '';
+
 	// Define the VARS which will be passed
 	var VARS = get_http_vars( req );
 
