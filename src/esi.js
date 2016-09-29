@@ -242,13 +242,7 @@ function processESIInclude(attrs, body, VARS){
 
 			log( log.INFO, 'esi:include', src );
 
-			// Run the Response back through ESI?
-			if(attrs.dca === 'esi'){
-				return ESI( body, null, VARS );
-			}
-			else {
-				return body;
-			}
+			return ESI( body, null, VARS );
 
 		},
 		function(err){
